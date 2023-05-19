@@ -42,6 +42,13 @@ RUN npm ci --omit=dev
 
 # USER chrome
 
+# Bundle app source
+COPY . .
+
 EXPOSE $PORT
 
-CMD [ "node", "/app/server.js" ]
+USER node
+
+# Run this app when a container is launched
+# base image entrypoint will add node command
+CMD [ "/app/server.js" ]
