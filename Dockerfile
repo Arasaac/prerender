@@ -2,7 +2,7 @@ FROM node:14-buster
 
 LABEL MAINTAINER juandacorreo@gmail.com
 
-ENV NODE_ENV=development 
+ENV NODE_ENV=production
 ENV PORT=3000
 
 ## see https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md
@@ -35,8 +35,8 @@ WORKDIR /app
 ENV HOME=/app
 
 # Install dependencies
-COPY package.json package-lock.json $HOME/
-RUN npm install
+COPY package*.json $HOME/
+RUN npm run ci --omit=dev
 
 # RUN chown -R chrome:chrome /app
 
