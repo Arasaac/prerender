@@ -36,7 +36,7 @@ ENV HOME=/app
 
 # Install dependencies
 COPY package*.json $HOME/
-RUN npm run ci --omit=dev
+RUN npm ci --omit=dev
 
 # RUN chown -R chrome:chrome /app
 
